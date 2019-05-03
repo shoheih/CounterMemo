@@ -1,4 +1,4 @@
-package net.minpro.countermemo
+package net.minpro.countermemo.view
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 
 import kotlinx.android.synthetic.main.activity_main.*
+import net.minpro.countermemo.R
 
 class MainActivity : AppCompatActivity() {
 

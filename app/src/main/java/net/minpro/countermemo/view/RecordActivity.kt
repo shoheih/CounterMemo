@@ -1,10 +1,11 @@
-package net.minpro.countermemo
+package net.minpro.countermemo.view
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 
 import kotlinx.android.synthetic.main.activity_record.*
+import net.minpro.countermemo.R
 
 class RecordActivity : AppCompatActivity() {
 

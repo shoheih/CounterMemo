@@ -1,4 +1,4 @@
-package net.minpro.countermemo
+package net.minpro.countermemo.model
 
 import io.realm.RealmObject
 

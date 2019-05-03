@@ -1,4 +1,4 @@
-package net.minpro.countermemo
+package net.minpro.countermemo.view
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import net.minpro.countermemo.R
 
 import net.minpro.countermemo.dummy.DummyContent
 import net.minpro.countermemo.dummy.DummyContent.DummyItem

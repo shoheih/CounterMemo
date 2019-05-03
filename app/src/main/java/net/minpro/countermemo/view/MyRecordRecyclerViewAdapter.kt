@@ -1,4 +1,4 @@
-package net.minpro.countermemo
+package net.minpro.countermemo.view
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-import net.minpro.countermemo.RecordFragment.OnListFragmentInteractionListener
+import net.minpro.countermemo.view.RecordFragment.OnListFragmentInteractionListener
 import net.minpro.countermemo.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_record.view.*
+import net.minpro.countermemo.R
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
