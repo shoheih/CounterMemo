@@ -3,7 +3,7 @@ package net.minpro.countermemo.view
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +65,8 @@ class RecordFragment : Fragment() {
 
         val results = viewModel.getRecordList()
 
-        myRecyclerView.layoutManager = LinearLayoutManager(activity)
+        //myRecyclerView.layoutManager = LinearLayoutManager(activity)
+        myRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         val adapter = MyRecordRecyclerViewAdapter(results!!)
         myRecyclerView.adapter = adapter
 

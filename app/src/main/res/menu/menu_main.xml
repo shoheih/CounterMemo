@@ -3,7 +3,9 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="net.minpro.countermemo.view.MainActivity">
     <item android:title="@string/record" android:id="@+id/action_record" android:icon="@drawable/ic_list_black_24dp"
-          app:showAsAction="always"/>
+          app:showAsAction="always" android:orderInCategory="2"/>
     <item android:title="@string/regist" android:id="@+id/action_regist" android:icon="@drawable/ic_done_black_24dp"
-          app:showAsAction="always"/>
+          app:showAsAction="always" android:orderInCategory="3"/>
+    <item android:title="@string/photo" android:id="@+id/action_photo" app:showAsAction="always"
+          android:icon="@drawable/ic_photo_black_24dp" android:orderInCategory="1"/>
 </menu>
