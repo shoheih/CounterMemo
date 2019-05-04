@@ -1,11 +1,9 @@
 package net.minpro.countermemo.view
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
-import net.minpro.countermemo.R
-
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_photo.*
+import net.minpro.countermemo.R
 
 class PhotoActivity : AppCompatActivity() {
 
@@ -14,9 +12,11 @@ class PhotoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_photo)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        toolbar.apply {
+            setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+            setNavigationOnClickListener {
+                finish()
+            }
         }
     }
 

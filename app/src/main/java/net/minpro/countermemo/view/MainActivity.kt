@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         menu.apply {
             findItem(R.id.action_record).isVisible = true
             findItem(R.id.action_regist).isVisible = true
+            findItem(R.id.action_photo).isVisible = true
         }
         return true
     }
@@ -49,8 +50,16 @@ class MainActivity : AppCompatActivity() {
             R.id.action_regist -> {
                 viewModel.recordToRealm()
             }
+            R.id.action_photo -> {
+                goPhotoScreen()
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun goPhotoScreen() {
+        val intent = Intent(this@MainActivity, PhotoActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goRecordScreen() {
