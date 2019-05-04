@@ -1,9 +1,7 @@
 package net.minpro.countermemo.view
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
-
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_record.*
 import net.minpro.countermemo.R
 
@@ -14,10 +12,15 @@ class RecordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_record)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        toolbar.apply {
+            setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+            setNavigationOnClickListener {
+                finish()
+            }
         }
-    }
 
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container_record, RecordFragment.newInstance(1))
+            .commit()
+    }
 }

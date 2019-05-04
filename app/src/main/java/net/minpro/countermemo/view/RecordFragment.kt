@@ -1,18 +1,15 @@
 package net.minpro.countermemo.view
 
-import android.content.Context
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_record_list.*
 import net.minpro.countermemo.R
-
-import net.minpro.countermemo.view.dummy.DummyContent
-import net.minpro.countermemo.view.dummy.DummyContent.DummyItem
+import net.minpro.countermemo.viewmodel.MainViewModel
 
 /**
  * A fragment representing a list of Items.
@@ -21,10 +18,12 @@ import net.minpro.countermemo.view.dummy.DummyContent.DummyItem
  */
 class RecordFragment : Fragment() {
 
+    lateinit var viewModel: MainViewModel
+
     // TODO: Customize parameters
     private var columnCount = 1
 
-    private var listener: OnListFragmentInteractionListener? = null
+    //private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,31 +40,50 @@ class RecordFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_record_list, container, false)
 
         // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyRecordRecyclerViewAdapter(DummyContent.ITEMS, listener)
-            }
-        }
+//        if (view is RecyclerView) {
+//            with(view) {
+//                layoutManager = when {
+//                    columnCount <= 1 -> LinearLayoutManager(context)
+//                    else -> GridLayoutManager(context, columnCount)
+//                }
+//
+//                adapter = MyRecordRecyclerViewAdapter(DummyContent.ITEMS, listener)
+//            }
+//        }
         return view
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        viewModel = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
+
+        setRecordList()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    private fun setRecordList() {
+
+        val results = viewModel.getRecordList()
+
+        myRecyclerView.layoutManager = LinearLayoutManager(activity)
+        val adapter = MyRecordRecyclerViewAdapter(results!!)
+        myRecyclerView.adapter = adapter
+
     }
+
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        if (context is OnListFragmentInteractionListener) {
+//            listener = context
+//        } else {
+//            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
+//        }
+//    }
+//
+//    override fun onDetach() {
+//        super.onDetach()
+//        listener = null
+//    }
 
     /**
      * This interface must be implemented by activities that contain this
@@ -78,10 +96,10 @@ class RecordFragment : Fragment() {
      * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
      * for more information.
      */
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
-    }
+//    interface OnListFragmentInteractionListener {
+//        // TODO: Update argument type and name
+//        fun onListFragmentInteraction(item: RecordModel)
+//    }
 
     companion object {
 
